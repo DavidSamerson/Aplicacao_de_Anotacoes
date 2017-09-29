@@ -1,0 +1,38 @@
+*{
+	margin:0;
+	padding: 0;
+}
+
+.menu{
+	margin-top: 5px;
+}
+.minhasanotacoes a{
+	height: 50px;
+	padding: 5px 0px 5px 0px;
+	box-sizing: border-box;
+}
+.logo{
+	width: 35px;
+}
+#logo{
+	margin-left: 180px;
+}
+.adicionarButton{
+	width: 35px;
+}
+.nav a:hover{
+	background-color: black;
+}
+
+.color{
+	background-color: ;
+}
+
+.imagemAdicionar{
+	width: 10px ;
+	height: 10px ;
+}
+
+.notas{
+	background-color: black;
+}

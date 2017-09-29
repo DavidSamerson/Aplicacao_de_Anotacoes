@@ -1,0 +1,63 @@
+<?php 
+session_start();
+
+$administrador = array(
+	'login' =>'adm@adm',
+	'senha' => 12345,
+	'nome' => 'Administrador'); 
+$usuario = array(
+	'login' => 'user@user',
+	'senha' => 123,
+	'nome' => 'Usuario 1');
+$erro = array();
+$erro = false;
+
+
+if (isset($_POST['login']) && isset($_POST['password']) && (strlen($_POST['login']) > 0) && (strlen($_POST['password']) > 0)) {
+
+	if ($_POST['login'] == $administrador['login'] && $_POST['password'] == $administrador['senha'] ) {
+
+		if ($_POST['lembrar'] == 1) {
+			$_SESSION['lembrar'] = true;
+			$_SESSION['login'] = $administrador['login'];
+			$_SESSION['senha'] = $administrador['senha'];
+		} else {
+			$_SESSION['login'] = '';
+			$_SESSION['senha'] = '';
+		}
+		$_SESSION['name'] = 'Administrador';
+		$erro['erroLogin'] = false;
+
+		header('Location: anotacoes.php');
+
+	}
+
+	if ($_POST['login'] == $usuario['login'] && $_POST['password'] == $usuario['senha'] ) {
+
+		if ($_POST['lembrar'] == 1) {
+			$_SESSION['lembrar'] = true;
+			$_SESSION['login'] = $usuario['login'];
+			$_SESSION['senha'] = $usuario['senha'];
+		} else {
+			$_SESSION['login'] = '';
+			$_SESSION['senha'] = '';
+		}
+
+		$_SESSION['name'] = 'Usuario 1';
+		$erro['erroLogin'] = false;
+
+		header('Location: anotacoes.php');
+	}
+
+	else {
+		$erro['erroLogin'] = true;
+		$_SESSION['name'] = '';
+		$_SESSION['login']='';
+		$_SESSION['senha']='';
+    }
+
+} 
+
+
+include "login.php";
+?>
