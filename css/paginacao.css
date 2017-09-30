@@ -24,15 +24,34 @@
 	background-color: black;
 }
 
-.color{
-	background-color: ;
-}
-
 .imagemAdicionar{
 	width: 10px ;
 	height: 10px ;
 }
 
-.notas{
-	background-color: black;
+/*Confuguração da header para se afastar do nav.*/
+.header{
+	height: 60px;
+	background-color: #4285F4;
+}
+/*Cor e configurações da div de Anotações*/
+.configNotas {
+	background-color: #4285F4;
+	padding: 30px;
+	color: white;
+}
+.configNotasEspaco, .configNotasEspaco a{
+	background-color: #4285F4;
+	margin: 10px;
+	color: white;
+}
+
+.configNotasEspaco a:hover{
+	text-decoration: none;
+	color: #DE2F18;
+}
+
+/*Classe que deixa todo o texto com a cor tematica*/
+.textoAzul {
+	color: #4285F4;
 }

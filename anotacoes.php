@@ -14,9 +14,6 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body>
-
-	<header>
-
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="container">
 			<!-- botão da responsividade -->
@@ -27,7 +24,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand">Anotações.com</a>
+				<a class="navbar-brand"><p class="textoAzul">Anotações.com</p></a>
 			</div>
 
 			<!-- coleção doconteudo do menu -->
@@ -71,9 +68,23 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
+	<header class="header">
 	</header>	
 	
-	<section> TESTE </section>
+	<section> 
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-9 pull-right" style="margin-top: 20px;">
+					<?php for ($i=0; $i <= 30 ; $i++) : ?>
+					<div class="col-md-2 configNotasEspaco" align="center">
+						<div class="pull-right"><a href="" style="padding: 10px; margin-left: 50%;">X</a></div>
+						<p class=" configNotas">TESTE DE ANOTAÇÔES AQUI 12345678899</p>
+					</div>
+					<?php endfor; ?>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<footer>
 		
