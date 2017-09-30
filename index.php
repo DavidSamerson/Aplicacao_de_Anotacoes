@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include 'variaveis.php';
 
 $administrador = array(
 	'login' =>'adm@adm',
@@ -17,16 +18,16 @@ if (isset($_POST['login']) && isset($_POST['password']) && (strlen($_POST['login
 
 	if ($_POST['login'] == $administrador['login'] && $_POST['password'] == $administrador['senha'] ) {
 
+		$_SESSION['nome'] = 'Administrador';
+
+		$erro['erroLogin'] = false;
+
 		if ($_POST['lembrar'] == 1) {
 			$_SESSION['lembrar'] = true;
 			$_SESSION['login'] = $administrador['login'];
-			$_SESSION['senha'] = $administrador['senha'];
 		} else {
 			$_SESSION['login'] = '';
-			$_SESSION['senha'] = '';
 		}
-		$_SESSION['name'] = 'Administrador';
-		$erro['erroLogin'] = false;
 
 		header('Location: anotacoes.php');
 
@@ -34,17 +35,16 @@ if (isset($_POST['login']) && isset($_POST['password']) && (strlen($_POST['login
 
 	if ($_POST['login'] == $usuario['login'] && $_POST['password'] == $usuario['senha'] ) {
 
+		$_SESSION['nome'] = 'Usuario X';
+
+		$erro['erroLogin'] = false;
+
 		if ($_POST['lembrar'] == 1) {
 			$_SESSION['lembrar'] = true;
 			$_SESSION['login'] = $usuario['login'];
-			$_SESSION['senha'] = $usuario['senha'];
 		} else {
 			$_SESSION['login'] = '';
-			$_SESSION['senha'] = '';
 		}
-
-		$_SESSION['name'] = 'Usuario 1';
-		$erro['erroLogin'] = false;
 
 		header('Location: anotacoes.php');
 	}

@@ -36,9 +36,6 @@
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Anotações <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
 							<li class="divider"></li>
 							<li><a href="#">Separated link</a></li>
 							<li class="divider"></li>
@@ -49,8 +46,9 @@
 				
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">Adicionar nota <img src="imagens/add.png" class="imagemAdicionar"></a></li>
-					
-					<li><a style="cursor: default;">Seja bem vindo <?php echo isset($_SESSION['name'])?$_SESSION['name']:''; ?></a></li>
+
+					<li><a style="cursor: default;">Seja bem vindo <?php echo $_SESSION['nome'];?></a></li>
+
 				</ul>
 
 				<form class="navbar-form" role="search">
@@ -59,12 +57,12 @@
 						<span class="input-group-btn">
 							<button type="reset" class="btn btn-default">
 								<span class="glyphicon glyphicon-remove">
-									<span class="sr-only">Close</span>
+									<span class="sr-only">Fechar</span>
 								</span>
 							</button>
 							<button type="submit" class="btn btn-default">
 								<span class="glyphicon glyphicon-search">
-									<span class="sr-only">Search</span>
+									<span class="sr-only">Pesquisar</span>
 								</span>
 							</button>
 						</span>
@@ -73,17 +71,10 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
-	</header>
-	<section>
-		
-		<?php  ?>
-		<div class="notas col-md-4">
-			
+	</header>	
+	
+	<section> TESTE </section>
 
-
-		</div>
-		<?php  ?>
-	</section>
 	<footer>
 		
 	</footer>
