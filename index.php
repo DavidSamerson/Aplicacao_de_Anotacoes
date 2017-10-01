@@ -1,6 +1,5 @@
 <?php 
 session_start();
-include 'variaveis.php';
 
 $administrador = array(
 	'login' =>'adm@adm',
@@ -59,5 +58,18 @@ if (isset($_POST['login']) && isset($_POST['password']) && (strlen($_POST['login
 } 
 
 
-include "login.php";
+for ($i=1; $i <= 30; $i++) {
+
+		$_SESSION['nota'][$i] = array(
+		'id' => $i,
+		'data' => '00/00/0000',
+		'mensagem' => 'Mensagem padrão ' . $i,
+		'apagada' => false) ;
+}
+
+$_SESSION['preencher'] = true;
+
+ // print_r( $_SESSION['notas']['1']);
+
+ include "login.php";
 ?>

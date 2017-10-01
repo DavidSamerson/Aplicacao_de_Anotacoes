@@ -2,6 +2,13 @@
 session_start();
 
 $nota = array();
+
+for ($i=1; $i <= 30 ; $i++) { 
+	if (isset($_SESSION['nota'][$i])) {
+		$nota[] = $_SESSION['nota'][$i];
+	}
+}
+
 $count = 0;
 $comando = (isset($_GET['comando']))? $_GET['comando'] : false;
 $idRemover = (isset($_GET['id']))? $_GET['id'] : '0';
@@ -18,27 +25,18 @@ if (strlen($_SESSION['nome'])==0) {
 	header ("Location: index.php");
 }
 
-if (count($nota) == 0) {
 
-	for ($i=1; $i <= 30; $i++) {
+if ($idRemover > 0 && $comando == true) {
 
-		$nota[] = array(
-		'id' => $i,
-		'data' => '00/00/0000',
-		'mensagem' => 'Mensagem padrão ' . $i,
-		'apagada' => false) ;
-	}
-}
-	
 	foreach ($nota as $n){
         if($n["id"] == $idRemover){
             if ($comando == true) {
-            	 unset($nota[$n]);
-
+            	unset($_SESSION['nota'][$n['id']]);
             }
         }
     }
-	
+			
+}
 
 include "anotacoes.php";
  

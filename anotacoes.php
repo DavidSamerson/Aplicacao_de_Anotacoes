@@ -101,7 +101,7 @@
 
 				<div class="col-md-9 pull-right" style="margin-top: 20px;" align="center">
 					<?php foreach ($nota as $n) : ?>
-						<?php if ($n['apagada'] == false):?>
+						<?php if (isset($_SESSION['nota'][$n['id']])):?>
 					<div class="col-md-2 configNotasEspaco" align="center">
 						<div class="pull-left" style="margin-top: 0px;">
 							
