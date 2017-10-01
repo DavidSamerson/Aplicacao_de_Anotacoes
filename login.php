@@ -42,6 +42,7 @@ session_start(); ?>
 						</div>
 
 						<?php if($erro['erroLogin']) : ?>
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 							<div class="alert alert-danger" role="alert" align="center"> Email ou senha incorretos </div>
 						<?php endif; ?>
 

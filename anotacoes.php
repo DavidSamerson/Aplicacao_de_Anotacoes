@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<?php session_start(); ?>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,12 +74,23 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-9 pull-right" style="margin-top: 20px;">
-					<?php for ($i=0; $i <= 30 ; $i++) : ?>
+					<?php foreach ($nota as $n) : ?>
+						<?php if ($n['apagada'] == false):?>
 					<div class="col-md-2 configNotasEspaco" align="center">
-						<div class="pull-right"><a href="" style="padding: 10px; margin-left: 50%;">X</a></div>
-						<p class=" configNotas">TESTE DE ANOTAÇÔES AQUI 12345678899</p>
+						<div class="pull-left" style="margin-top: 0px;">
+							
+						</div>
+						<div class="pull-right">
+							<a href="nota.php?id=<?php echo $n['id']; ?>&comando=true" style="padding: 10px; margin-left: 50%;">X</a>
+						</div>
+						
+						<p class=" configNotas"><?php echo $n['mensagem']; ?></p>
+						<p><span class="glyphicon glyphicon-calendar" style="background-color: grey; padding: 10px 20px;">  
+							<?php echo $n['data']; ?></span></p>
+						<a href=""><span class="glyphicon glyphicon-edit" style="padding:10px;"></span></a>
 					</div>
-					<?php endfor; ?>
+						<?php endif ?>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>

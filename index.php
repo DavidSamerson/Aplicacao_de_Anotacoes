@@ -29,7 +29,7 @@ if (isset($_POST['login']) && isset($_POST['password']) && (strlen($_POST['login
 			$_SESSION['login'] = '';
 		}
 
-		header('Location: anotacoes.php');
+		header('Location: nota.php');
 
 	}
 
@@ -46,7 +46,7 @@ if (isset($_POST['login']) && isset($_POST['password']) && (strlen($_POST['login
 			$_SESSION['login'] = '';
 		}
 
-		header('Location: anotacoes.php');
+		header('Location: nota.php');
 	}
 
 	else {
