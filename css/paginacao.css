@@ -37,10 +37,16 @@
 
 /*Cor e configurações da div de Anotações*/
 .configNotas {
+
 	background-color: #4285F4;
 	padding: 30px;
 	color: white;
 }
+/*Configuração do sombreamento*/
+.configNotasEspaco, .sombreamento{
+	box-shadow: 2px 0 0 grey;
+}
+
 .configNotasEspaco, .configNotasEspaco a{
 	background-color: #4285F4;
 	margin: 10px;
@@ -55,4 +61,35 @@
 /*Classe que deixa todo o texto com a cor tematica*/
 .textoAzul {
 	color: #4285F4;
+}
+
+/*Tamanho e posição das imagens referentes ao footer*/
+.socialImage{
+	width: 50px;
+	margin: 10px;
+}
+
+.socialImage:hover{
+	border: 4px solid #DE2F18;
+	border-radius: 30px; 
+	width: 47px;
+	margin: 10px;
+}
+
+footer {
+	margin-top: 80px;
+	background-color: #808080;
+	color: white ;
+	border-top: 4px solid #4285F4;
+}
+
+.campoFaleConosco {
+	height: 30px;
+	min-width: 520px;
+}
+
+#botaoEnviar{
+	color: black;
+	padding: 10px;
+	margin-top: 20px;
 }

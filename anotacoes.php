@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="Aplicação de Anotações">
     <meta name="author" content="DAVID SAMERSON">
 
@@ -11,6 +11,7 @@
 
 	<link rel="stylesheet" type="text/css" href="css/paginacao.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 </head>
 <body>
 		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -31,9 +32,11 @@
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Anotações <b class="caret"></b></a>
-						<ul class="dropdown-menu">
+						<ul class="dropdown-menu" aria-labelled-by="dropdown-menu">
 							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
+							<?php foreach ($nota as $n) : ?>
+							<li><a href="#"><?php echo $n['mensagem'] ?></a></li>
+							<?php endforeach; ?>
 							<li class="divider"></li>
 							<li><a href="#">One more separated link</a></li>
 						</ul>
@@ -81,25 +84,94 @@
 							
 						</div>
 						<div class="pull-right">
-							<a href="nota.php?id=<?php echo $n['id']; ?>&comando=true" style="padding: 10px; margin-left: 50%;">X</a>
+							<a href="nota.php?id=<?php echo $n['id']; ?>&comando=true" style="padding: 10px; margin-left: 50%;"
+								class="sombreamento">X</a>
 						</div>
 						
 						<p class=" configNotas"><?php echo $n['mensagem']; ?></p>
-						<p><span class="glyphicon glyphicon-calendar" style="background-color: grey; padding: 10px 20px;">  
-							<?php echo $n['data']; ?></span></p>
-						<a href=""><span class="glyphicon glyphicon-edit" style="padding:10px;"></span></a>
+						<p>
+							<a href="" style="padding: 0px; margin: 0px;">
+								<span class="glyphicon glyphicon-calendar" style="background-color: grey; padding: 10px 20px;">
+									<?php echo $n['data']; ?></span></a></p>
+							<a href="">
+							<span class="glyphicon glyphicon-edit" style="padding:10px;"></span></a>
 					</div>
 						<?php endif ?>
 					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>
-	</section>
+</section>
 
-	<footer>
-		
-	</footer>
+<footer>
+<div class="container-fluid">
+<div class="col-md-7 pull-left">
+<div class="col-md-12">
+	<div class="pull-left col-sm-6" align="center">
+		<h3>Redes Sociais</h3>
+		<hr>
+	</div>
+	<div class="col-md-6"  align="center"> <h3>Telefones para contato</h3> <hr> </div>
+</div>
+<div class="col-md-12">
+	<div class="pull-left col-sm-6" align="center">
+		<img src="imagens/facebook.png" class="socialImage">
+	</div>
+	<div class="col-md-6"  align="center">
+		<h4>(85) 3223 - 3333</h4>
+		<h4>(11) 3643 - 3333</h4>
+	</div>
+</div>
+<div class="col-md-12">
+	<div class="pull-left col-sm-6" align="center">
+		<img src="imagens/google-plus.png" class="socialImage">
+	</div>
+	<div class="col-md-6"  align="center">
+		<h4>(85) 3223 - 3333</h4>
+		<h4>(11) 3643 - 3333</h4>
+	</div>
+</div>
+<div class="col-md-12">
+	<div class="pull-left col-sm-6" align="center">
+		<img src="imagens/twitter.png" class="socialImage">
+	</div>
+	<div class="col-md-6"  align="center">
+		<h4>(85) 3223 - 3333</h4>
+		<h4>(11) 3643 - 3333</h4>
+	</div>
+</div>
+</div>
+<div class="col-md-5 pull-right">
+	<form>
+	<fieldset>
+		<legend><h3 style="color: white;">Fale Conosco<h3>
+			<hr></legend>
+			
+			<label>
+				<h4>Nome:<h4> 
+				<input type="text" name="nomepessoa" class="campoFaleConosco input-group">
+			</label>
 
+			<label>
+				<h4>Mensagem:<h4>
+				<textarea  class="campoFaleConosco "></textarea>
+			</label>
+			<br>
+			<button type="submit" name="enviar" class="pull-right btn btn-info" id="botaoEnviar">Enviar</button>
+	</fieldset>
+	</form>
+</div>
+</footer>
+
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<script>
+  $(function () {
+    $('.dropdown-toggle').dropdown();
+  }); 
+</script>
+
 </body>
 </html>
