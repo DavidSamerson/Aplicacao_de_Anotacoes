@@ -3,6 +3,13 @@ session_start();
 
 $nota = array();
 $count = 0;
+$menu = array(
+	'1' => 'Notas Recentes',
+	'2' => 'Lixeira',
+	'3' => 'Datas Proximas',
+	'4' => 'Todas as Datas',
+	'5' => 'Temporarias',
+	'6' => 'Configurações');
 
 if (strlen($_SESSION['nome'])==0) {
 	header ("Location: index.php");

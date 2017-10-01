@@ -32,13 +32,13 @@
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> Anotações <b class="caret"></b></a>
-						<ul class="dropdown-menu" aria-labelled-by="dropdown-menu">
+						<ul class="dropdown-menu configuracoesMenu" aria-labelled-by="dropdown-menu">
+							<li><a href="#">Acesso Rápido</a></li>
 							<li class="divider"></li>
 							<?php foreach ($nota as $n) : ?>
 							<li><a href="#"><?php echo $n['mensagem'] ?></a></li>
 							<?php endforeach; ?>
 							<li class="divider"></li>
-							<li><a href="#">One more separated link</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -76,6 +76,11 @@
 	<section> 
 		<div class="container-fluid">
 			<div class="row">
+
+				<div class="pull-left col-md-3 classeMenu2" align="center" onclick="Mudarestado('menu2')">
+					<span class="glyphicon glyphicon glyphicon-menu-down btn-lg" style="color: white"></span>
+				</div>
+
 				<div class="col-md-9 pull-right" style="margin-top: 20px;">
 					<?php foreach ($nota as $n) : ?>
 						<?php if ($n['apagada'] == false):?>
@@ -99,8 +104,25 @@
 						<?php endif ?>
 					<?php endforeach; ?>
 				</div>
+
+				<div class="pull-left col-md-3" align="center" id="menu2">
+					<div class="usuarioMenu2">
+						<span class="glyphicon glyphicon-user glyphicon-lg" style="color: white;" >
+						</span> <br> <p><?php echo $_SESSION['nome']; ?></p>
+					</div>
+					<ul>
+						<li><span class="glyphicon glyphicon-duplicate"></span> Notas Expiradas</li>
+						<li><span class="glyphicon glyphicon-copy"></span> Novas Notas</li>
+						<li><span class="glyphicon glyphicon-trash"></span> Lixeira</li>
+						<li><span class="glyphicon glyphicon-cog"></span> Configurações</li>
+						<li><span class="glyphicon glyphicon-user"></span> Perfil</li>
+						<li><span class="glyphicon glyphicon-remove-circle"></span> Sair</li>
+					</ul>
+				</div>
+
 			</div>
 		</div>
+
 </section>
 
 <footer>
@@ -171,6 +193,17 @@
   $(function () {
     $('.dropdown-toggle').dropdown();
   }); 
+</script>
+
+<script type="text/javascript">
+
+	function Mudarestado(el) {
+        var display = document.getElementById(el).style.display;
+        if(display == "none")
+            document.getElementById(el).style.display = 'block';
+        else
+            document.getElementById(el).style.display = 'none';
+    }
 </script>
 
 </body>
