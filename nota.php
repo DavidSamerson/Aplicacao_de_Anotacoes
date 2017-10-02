@@ -1,15 +1,10 @@
 <?php 
 session_start();
+include "ajudantes.php";
 
-$nota = array();
+$nota = $_SESSION['nota'];
 
-for ($i=1; $i <= count($_SESSION['nota']) ; $i++) { 
-	if (isset($_SESSION['nota'][$i])) {
-		$nota[] = $_SESSION['nota'][$i];
-	}
-}
 
-$count = 0;
 $comando = (isset($_GET['comando']))? $_GET['comando'] : false;
 $Id = (isset($_GET['id']))? $_GET['id'] : '0';
 
@@ -25,47 +20,51 @@ if (strlen($_SESSION['nome'])==0) {
 	header ("Location: index.php");
 }
 
-
-if ($Id > 0 && $comando == true) {
-
-	foreach ($nota as $n){
-        if($n["id"] == $Id){
-            if ($comando == true) {
-            	unset($_SESSION['nota'][$n['id']]);
-            	header("Location: nota.php");
-            	die();
+switch ($comando){
+    case "apagar":
+        if ($Id > 0) {
+            foreach ($nota as $n){
+                if($n["id"] == $Id){
+                    unset($_SESSION['nota'][$n['id']]);
+                    header("Location: nota.php");
+                    die();
+                }
             }
         }
-    }
-			
-}
+        break;
 
-if (isset($_GET['nome']) && isset($_GET['mensagem']) && isset($_GET['data']) && isset($_GET['id'])) {
+    case "cadastrar":
 
-	for ($i=0; $i <= count($nota); $i++){
+        //pega o id da última anotação
+        foreach ($nota as $n){
+            $ultimoid = $n["id"];
+        }
 
-		// EDITAR
-		if (($_GET['id'] == $i) && ($_GET['id'] != 0)) {
-			$_SESSION['nota'][$i] = array(
-	            			'id' => $i,
-	            				'nome' =>$_GET['nome'],
-	            					'data' =>$_GET['data'],
-	            						'mensagem' => $_GET['mensagem']);
-		} 
+        if ($_GET['id'] == 0) {
+            $id = $ultimoid + 1;
+            $_SESSION['nota'][$id] = array(
+                'id' => $id,
+                'nome' =>$_GET['nome'],
+                'data' =>$_GET['data'],
+                'mensagem' => $_GET['mensagem']);
+        }
+        header("Location: nota.php");
+        die();
+        break;
 
-		//CADASTRAR
-		if ($_GET['id'] == 0) {
-			$id = count($nota) + 1;
-	    	$_SESSION['nota'][$id] = array(
-	            			'id' => $id,
-	            				'nome' =>$_GET['nome'],
-	            					'data' =>$_GET['data'],
-	            						'mensagem' => $_GET['mensagem']);
-    	}	
-	}
-
-	header("Location: nota.php");
-	die();
+    case "editar":
+        foreach ($nota as $n){
+            if($n["id"] == $Id) {
+                $_SESSION['nota'][$n['id']] = array(
+                    'id' => $Id,
+                    'nome' =>$_GET['nome'],
+                    'data' =>$_GET['data'],
+                    'mensagem' => $_GET['mensagem']);
+            }
+        }
+        header("Location: nota.php");
+        die();
+        break;
 }
 
  include "anotacoes.php";

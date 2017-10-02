@@ -45,7 +45,7 @@
 				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" data-toggle="modal" data-target="#myModal">Adicionar nota <img src="imagens/add.png" class="imagemAdicionar"></a></li>
+					<li><a href="#" data-toggle="modal" data-target="#myModal" onclick="cadastraDadosModal()">Adicionar nota <img src="imagens/add.png" class="imagemAdicionar"></a></li>
 
 					<li><a style="cursor: default;">Seja bem vindo <?php echo $_SESSION['nome'];?></a></li>
 
@@ -103,23 +103,27 @@
 
 				<div class="col-md-9 pull-right" style="margin-top: 20px;" align="center">
 					<?php foreach ($nota as $n) : ?>
-					  <?php if (isset($_SESSION['nota'][$n['id']])):?>
+					  <?php if (isset($_SESSION['nota'][$n['id']]) && $n['id'] > 0 && $n['id'] != ''):?>
 
 					<div class="col-md-2 configNotasEspaco" align="center">
-
+						<!-- Sair -->
 						<div class="pull-right">
-							<a href="nota.php?id=<?php echo $n['id']; ?>&comando=true" style="padding: 10px; margin-left: 50%;"
+							<a href="nota.php?id=<?php echo $n['id']; ?>&comando=apagar" style="padding: 10px; margin-left: 50%;"
 								class="sombreamento">X</a>
 						</div>
+						<!-- Nome -->
 						<h4 class="tituloNota"><?php echo $n['nome'];?></h4>
-						
+						<!-- Mensagem -->
 						<div class="configNotas col-md-12" align="center"><?php echo $n['mensagem']; ?></div>
+						<!-- Data -->
 						<p>
 							<a href="" style="padding: 0px; margin: 0px;">
-								<span class="glyphicon glyphicon-calendar" style="background-color: grey; padding: 10px 20px;">
-									<?php echo $n['data']; ?></span></a>
+								<span class="glyphicon glyphicon-calendar" style="background-color: grey; padding: 10px 20px; 
+								<?php echo verificaData($n['data']); ?>">
+									<?php echo traduz_data_para_exibir($n['data']); ?></span></a>
 						</p>
-							<a onclick="setaDadosModal('<?php echo $n['id']; ?>','<?php echo $n['nome']; ?>','<?php echo $n['data']; ?>', '<?php echo $n['mensagem'];?>');" 
+						<!-- Editar -->
+							<a onclick="editaDadosModal('<?php echo $n['id']; ?>','<?php echo $n['nome']; ?>','<?php echo $n['data']; ?>', '<?php echo $n['mensagem'];?>');"
 							 data-toggle="modal" data-target="#myModal" >
 							<span class="glyphicon glyphicon-edit" style="padding:10px;"></span></a>
 					</div>
@@ -166,7 +170,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="textinput">Data: </label>
             <div class="col-sm-10">
-              <input type="text" placeholder="00/00/0000" name='data' class="form-control" id="datamodal">
+              <input type="date" placeholder="00/00/0000" name='data' class="form-control" id="datamodal">
             </div>
           </div>
 
@@ -178,7 +182,8 @@
             </div>
           </div>
 
-          <input type="hidden" name="id" id="idmodal" value="0">
+          <input type="hidden" name="comando" id="comando" value="cadastrar">
+            <input type="hidden" name="id" id="idmodal" value="0">
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -261,13 +266,21 @@
 </footer>
 
 <script type="text/javascript">
-	function setaDadosModal(id, nome, data, mensagem) {
+	function editaDadosModal(id, nome, data, mensagem) {
 
-    	document.getElementById('idmodal').value = id;
-    	document.getElementById('nomemodal').value = nome;
-    	document.getElementById('datamodal').value = data;
-    	document.getElementById('mensagemmodal').value = mensagem;
-	}
+        document.getElementById('idmodal').value = id;
+        document.getElementById('nomemodal').value = nome;
+        document.getElementById('datamodal').value = data;
+        document.getElementById('mensagemmodal').value = mensagem;
+        document.getElementById('comando').value = "editar";
+    }
+    function cadastraDadosModal() {
+        document.getElementById('idmodal').value = "";
+        document.getElementById('nomemodal').value = "";
+        document.getElementById('datamodal').value = "";
+        document.getElementById('mensagemmodal').value = "";
+        document.getElementById('comando').value = "cadastrar";
+    }
 </script>
 
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
