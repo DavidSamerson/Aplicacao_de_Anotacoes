@@ -1,6 +1,6 @@
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");
-
-body, .body {
+body,
+.body {
     font-family: Open Sans;
     font-size: 14px;
     line-height: 1.42857;
@@ -9,6 +9,7 @@ body, .body {
     padding: 0;
     margin: 0;
 }
+
 .container-login {
     min-height: 0;
     width: 480px;
@@ -16,31 +17,37 @@ body, .body {
     margin-top: 40px;
     padding: 0;
 }
+
 .center-block {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
-.container-login > section {
+
+.container-login>section {
     margin-left: 0;
     margin-right: 0;
     padding-bottom: 10px;
 }
+
 #top-bar {
     display: inherit;
 }
+
 .nav-tabs.nav-justified {
     border-bottom: 0 none;
     width: 100%;
 }
-.nav-tabs.nav-justified > li {
+
+.nav-tabs.nav-justified>li {
     display: table-cell;
     width: 1%;
     float: none;
 }
-.container-login .nav-tabs.nav-justified > li > a,
-.container-login .nav-tabs.nav-justified > li > a:hover,
-.container-login .nav-tabs.nav-justified > li > a:focus {
+
+.container-login .nav-tabs.nav-justified>li>a,
+.container-login .nav-tabs.nav-justified>li>a:hover,
+.container-login .nav-tabs.nav-justified>li>a:focus {
     background: #4285F4;
     border: medium none;
     color: #ffffff;
@@ -48,27 +55,33 @@ body, .body {
     margin-right: 0;
     border-radius: 0;
 }
-.container-login .nav-tabs.nav-justified > .active > a,
-.container-login .nav-tabs.nav-justified > .active > a:hover,
-.container-login .nav-tabs.nav-justified > .active > a:focus {
+
+.container-login .nav-tabs.nav-justified>.active>a,
+.container-login .nav-tabs.nav-justified>.active>a:hover,
+.container-login .nav-tabs.nav-justified>.active>a:focus {
     background: #ffffff;
     color: #333333;
 }
-.container-login .nav-tabs.nav-justified > li > a:hover,
-.container-login .nav-tabs.nav-justified > li > a:focus {
+
+.container-login .nav-tabs.nav-justified>li>a:hover,
+.container-login .nav-tabs.nav-justified>li>a:focus {
     background: #de2f18;
 }
+
+
 /*quadrado do login*/
+
 .tabs-login {
     background: #ffffff;
     border: medium none;
     margin-top: -1px;
     padding: 30px;
-
 }
+
 .container-login h2 {
     color: #4285F4;
 }
+
 .form-control {
     background-color: #ffffff;
     background-image: none;
@@ -84,9 +97,11 @@ body, .body {
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
     width: 100%;
 }
+
 .container-login .checkbox {
     margin-top: -15px;
 }
+
 .container-login button {
     background-color: #4285F4;
     border-color: #4285F4;
@@ -97,6 +112,7 @@ body, .body {
     padding: 10px 16px;
     width: 100%;
 }
+
 .container-login button:hover,
 .container-login button:focus {
     background: #de2f18;
