@@ -1,5 +1,7 @@
 <?php 
+
 function verificaData($data){
+
 
 	if ($data == "" or $data == "0000-00-00") {
 		return "";
@@ -20,8 +22,10 @@ function verificaData($data){
 	$anoAtual = date('Y');
 
 	if (($diaAtual > $dia) && ($mesAtual > $mes) && ($anoAtual > $ano)) {
+
 		return 'border: 2px dotted red;';
 	} 
+
 }
 
 function traduz_data_para_exibir($data){

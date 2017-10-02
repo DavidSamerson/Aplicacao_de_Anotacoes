@@ -53,7 +53,7 @@
 
 				<form class="navbar-form" role="search">
 					<div class="input-group">
-						<input type="text" class="form-control pull-right" style="width: 300px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5;" placeholder="Search">
+						<input type="text" class="form-control pull-left caixaPesquisar" placeholder="Search">
 						<span class="input-group-btn">
 							<button type="reset" class="btn btn-default">
 								<span class="glyphicon glyphicon-remove">
@@ -76,13 +76,14 @@
 	
 	<section> 
 		<div class="container-fluid">
-			<div class="col-md-3">
 
-				<div class="pull-left col-md-12 classeMenu2" align="center" onclick="Mudarestado('menu2')">
+			<div class="col-md-2 col-sm-12 col-xs-12">
+
+				<div class="pull-left col-md-12 col-sm-12 col-xs-12 classeMenu2" align="center" onclick="Mudarestado('menu2')">
 					<span class="glyphicon glyphicon glyphicon-menu-down btn-lg" style="color: white"></span>
 				</div>
 
-				<div class="pull-left col-md-12" align="center" id="menu2">
+				<div class="pull-left col-md-12  col-sm-12 col-xs-12" align="center" id="menu2">
 					<div class="usuarioMenu2">
 						<span class="glyphicon glyphicon-user glyphicon-lg" style="color: white;" >
 						</span> <br> <p><?php echo $_SESSION['nome']; ?></p>
@@ -101,31 +102,32 @@
 
 <!---------------------------------------------------------------------------------------------------------------------- -->
 
-				<div class="col-md-9 pull-right" style="margin-top: 20px;" align="center">
+				<div class="col-md-10 col-sm-12 col-xs-12 pull-right" style="margin-top: 20px;" align="center">
 					<?php foreach ($nota as $n) : ?>
 					  <?php if (isset($_SESSION['nota'][$n['id']]) && $n['id'] > 0 && $n['id'] != ''):?>
 
-					<div class="col-md-2 configNotasEspaco" align="center">
+					<div class="col-md-2 col-sm-5 col-xs-12 configNotasEspaco pull-right" align="center">
 						<!-- Sair -->
 						<div class="pull-right">
 							<a href="nota.php?id=<?php echo $n['id']; ?>&comando=apagar" style="padding: 10px; margin-left: 50%;"
 								class="sombreamento">X</a>
 						</div>
 						<!-- Nome -->
-						<h4 class="tituloNota"><?php echo $n['nome'];?></h4>
+						<div class="tituloNota col-sm-12 col-xs-12"><strong><?php echo $n['nome'];?></strong></div>
 						<!-- Mensagem -->
-						<div class="configNotas col-md-12" align="center"><?php echo $n['mensagem']; ?></div>
+						<div class="configNotas col-md-12 col-xs-12" align="center"><?php echo $n['mensagem']; ?></div>
 						<!-- Data -->
-						<p>
-							<a href="" style="padding: 0px; margin: 0px;">
-								<span class="glyphicon glyphicon-calendar" style="background-color: grey; padding: 10px 20px; 
+						<div class="col-md-12 col-sm-12 col-xs-12" align="center">
+								<span class="glyphicon glyphicon-calendar" style=" background-color: grey; padding: 10px; 
 								<?php echo verificaData($n['data']); ?>">
-									<?php echo traduz_data_para_exibir($n['data']); ?></span></a>
-						</p>
+									<?php echo traduz_data_para_exibir($n['data']); ?></span>
+						</div>
 						<!-- Editar -->
+						<div class="col-md-12 col-sm-12 col-xs-12">
 							<a onclick="editaDadosModal('<?php echo $n['id']; ?>','<?php echo $n['nome']; ?>','<?php echo $n['data']; ?>', '<?php echo $n['mensagem'];?>');"
 							 data-toggle="modal" data-target="#myModal" >
 							<span class="glyphicon glyphicon-edit" style="padding:10px;"></span></a>
+						</div>
 					</div>
 
 						<?php endif ?>

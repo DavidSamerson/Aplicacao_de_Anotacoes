@@ -1,9 +1,7 @@
 <?php 
 session_start();
-include "ajudantes.php";
 
 $nota = $_SESSION['nota'];
-
 
 $comando = (isset($_GET['comando']))? $_GET['comando'] : false;
 $Id = (isset($_GET['id']))? $_GET['id'] : '0';
@@ -66,6 +64,8 @@ switch ($comando){
         die();
         break;
 }
+
+ include "ajudantes.php";
 
  include "anotacoes.php";
  

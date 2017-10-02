@@ -33,11 +33,7 @@
 	overflow: auto;
 	height: 500px;
 }
-/*Confuguração da header para se afastar do nav.*/
-.header{
-	height: 60px;
-	background-color: #4285F4;
-}
+
 
 /*Configuracão do submenu do lado das notas*/
 .classeMenu2{
@@ -132,7 +128,7 @@
 }
 
 .tituloNota{
-	margin-top: 20%;
+	margin-top: 5%;
 	overflow: auto;
 	height: 50px;
 }
@@ -183,4 +179,38 @@ label{
 	color: black;
 	padding: 10px;
 	margin-top: 20px;
+}
+
+
+/***************************************RESPONSIVIDADE*/
+/*TELA CHEIA*/
+@media screen and (min-width: 992px){
+	/*Confuguração da header para se afastar do nav.*/
+	.header{
+		height: 60px;
+		background-color: #4285F4;
+	}
+
+}
+/*TELA MEDIANA*/
+@media screen and (max-width: 991px){
+	/*Confuguração da header para se afastar do nav.*/
+	.header{
+		height: 100px;
+		background-color: #4285F4;
+	}
+	.configNotasEspaco{
+		padding-bottom: 40%;
+	}
+
+}
+/*TELA PEQUENA*/
+@media screen and (max-width: 768px){
+	/*Confuguração da header para se afastar do nav.*/
+	.header{
+		height: 60px;
+		background-color: #4285F4;
+	}
+}
+
 }
