@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 </head>
 <body class="body">
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" >
 		<div class="container">
 			<!-- botão da responsividade -->
 			<div class="navbar-header">
@@ -103,7 +103,7 @@
 
 				<div class="col-md-9 pull-right" style="margin-top: 20px;" align="center">
 					<?php foreach ($nota as $n) : ?>
-						<?php if (isset($_SESSION['nota'][$n['id']])):?>
+					  <?php if (isset($_SESSION['nota'][$n['id']])):?>
 
 					<div class="col-md-2 configNotasEspaco" align="center">
 
@@ -123,6 +123,7 @@
 							 data-toggle="modal" data-target="#myModal" >
 							<span class="glyphicon glyphicon-edit" style="padding:10px;"></span></a>
 					</div>
+
 						<?php endif ?>
 					<?php endforeach; ?>
 

@@ -100,6 +100,14 @@
 
 	background-color: #4285F4;
 	padding: 30px;
+	overflow: hidden;
+	height: 100px;
+	color: white;
+}
+.configNotas:hover {
+	text-overflow: visible;
+	background-color: #4285F4;
+	padding: 30px;
 	overflow: auto;
 	height: 100px;
 	color: white;

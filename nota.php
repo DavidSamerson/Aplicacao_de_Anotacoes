@@ -51,8 +51,6 @@ if (isset($_GET['nome']) && isset($_GET['mensagem']) && isset($_GET['data']) && 
 	            				'nome' =>$_GET['nome'],
 	            					'data' =>$_GET['data'],
 	            						'mensagem' => $_GET['mensagem']);
-				header("Location: nota.php");
-				die();
 		} 
 
 		//CADASTRAR
@@ -63,10 +61,11 @@ if (isset($_GET['nome']) && isset($_GET['mensagem']) && isset($_GET['data']) && 
 	            				'nome' =>$_GET['nome'],
 	            					'data' =>$_GET['data'],
 	            						'mensagem' => $_GET['mensagem']);
-	    	header("Location: nota.php");
-			die();
     	}	
 	}
+
+	header("Location: nota.php");
+	die();
 }
 
  include "anotacoes.php";

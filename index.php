@@ -58,15 +58,15 @@ if (isset($_POST['login']) && isset($_POST['password']) && (strlen($_POST['login
 } 
 
 
-// for ($i=1; $i <= 30; $i++) {
+for ($i=1; $i <= 10; $i++) {
 
-// 		$_SESSION['nota'][$i] = array(
-// 		'id' => $i,
-// 		'data' => '00/00/0000',
-// 		'nome' => 'Titulo' . $i,
-// 		'mensagem' => 'Mensagem padrão ' . $i
-// 		) ;
-// }
+		$_SESSION['nota'][$i] = array(
+		'id' => $i,
+		'data' => '00/00/0000',
+		'nome' => 'Titulo' . $i,
+		'mensagem' => 'Mensagem padrão ' . $i
+		) ;
+}
 
 
  // print_r( $_SESSION['notas']['1']);
