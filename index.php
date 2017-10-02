@@ -7,7 +7,7 @@ $administrador = array(
 	'nome' => 'Administrador'); 
 $usuario = array(
 	'login' => 'user@user',
-	'senha' => 123,
+	'senha' => 12345,
 	'nome' => 'Usuario 1');
 $erro = array();
 $erro = false;
@@ -58,16 +58,16 @@ if (isset($_POST['login']) && isset($_POST['password']) && (strlen($_POST['login
 } 
 
 
-for ($i=1; $i <= 30; $i++) {
+// for ($i=1; $i <= 30; $i++) {
 
-		$_SESSION['nota'][$i] = array(
-		'id' => $i,
-		'data' => '00/00/0000',
-		'mensagem' => 'Mensagem padrão ' . $i,
-		'apagada' => false) ;
-}
+// 		$_SESSION['nota'][$i] = array(
+// 		'id' => $i,
+// 		'data' => '00/00/0000',
+// 		'nome' => 'Titulo' . $i,
+// 		'mensagem' => 'Mensagem padrão ' . $i
+// 		) ;
+// }
 
-$_SESSION['preencher'] = true;
 
  // print_r( $_SESSION['notas']['1']);
 

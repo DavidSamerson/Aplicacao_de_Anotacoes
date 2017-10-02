@@ -45,7 +45,7 @@
 				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Adicionar nota <img src="imagens/add.png" class="imagemAdicionar"></a></li>
+					<li><a href="#" data-toggle="modal" data-target="#myModal">Adicionar nota <img src="imagens/add.png" class="imagemAdicionar"></a></li>
 
 					<li><a style="cursor: default;">Seja bem vindo <?php echo $_SESSION['nome'];?></a></li>
 
@@ -93,39 +93,111 @@
 						<li><span class="glyphicon glyphicon-trash"></span> Lixeira</li>
 						<li><span class="glyphicon glyphicon-cog"></span> Configurações</li>
 						<li><span class="glyphicon glyphicon-user"></span> Perfil</li>
-						<li><span class="glyphicon glyphicon-remove-circle"></span> Sair</li>
+						<li><a href="index.php" class="botaoSair"><span class="glyphicon glyphicon-remove-circle"></span> Sair</li></a>
 					</ul>
 
 				</div>
 			</div>
 
+<!---------------------------------------------------------------------------------------------------------------------- -->
+
 				<div class="col-md-9 pull-right" style="margin-top: 20px;" align="center">
 					<?php foreach ($nota as $n) : ?>
 						<?php if (isset($_SESSION['nota'][$n['id']])):?>
+
 					<div class="col-md-2 configNotasEspaco" align="center">
-						<div class="pull-left" style="margin-top: 0px;">
-							
-						</div>
+
 						<div class="pull-right">
 							<a href="nota.php?id=<?php echo $n['id']; ?>&comando=true" style="padding: 10px; margin-left: 50%;"
 								class="sombreamento">X</a>
 						</div>
+						<h4 class="tituloNota"><?php echo $n['nome'];?></h4>
 						
-						<p class=" configNotas"><?php echo $n['mensagem']; ?></p>
+						<div class="configNotas col-md-12" align="center"><?php echo $n['mensagem']; ?></div>
 						<p>
 							<a href="" style="padding: 0px; margin: 0px;">
 								<span class="glyphicon glyphicon-calendar" style="background-color: grey; padding: 10px 20px;">
-									<?php echo $n['data']; ?></span></a></p>
-							<a href="">
+									<?php echo $n['data']; ?></span></a>
+						</p>
+							<a onclick="setaDadosModal('<?php echo $n['id']; ?>','<?php echo $n['nome']; ?>','<?php echo $n['data']; ?>', '<?php echo $n['mensagem'];?>');" 
+							 data-toggle="modal" data-target="#myModal" >
 							<span class="glyphicon glyphicon-edit" style="padding:10px;"></span></a>
 					</div>
 						<?php endif ?>
 					<?php endforeach; ?>
+
+					<?php if (count($nota) == 0) : ?>
+						<div class="col-md-12 alerta" align="center">
+							<div class="alert alert-danger" role="alert"><strong>OPS!</strong> Você não possui nenhuma nota no momento, clique em adicionar nota para criar..</div>
+						</div>
+					<?php endif; ?>
 				</div>
+
+<!-- --------------------------------------------------------------------------------------------------------------------- -->
 
 			</div>
 		</div>
 
+</section>
+<section class="MODAL">
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cadastrar Nota</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+    <div class="col-md-12">
+      <form class="form-horizontal" role="form">
+        <fieldset>
+          <!-- Título -->
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Titulo: </label>
+            <div class="col-sm-10">
+              <input type="text"  placeholder="Nome da nota" name="nome" id="nomemodal" class="form-control">
+            </div>
+          </div>
+
+          <!-- Data -->
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Data: </label>
+            <div class="col-sm-10">
+              <input type="text" placeholder="00/00/0000" name='data' class="form-control" id="datamodal">
+            </div>
+          </div>
+
+          <!-- Mensagem -->
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Mensagem: </label>
+            <div class="col-sm-10">
+              <textarea placeholder="Digite Sua Mensagem" name="mensagem" class="form-control" id="mensagemmodal"> </textarea>
+            </div>
+          </div>
+
+          <input type="hidden" name="id" id="idmodal" value="0">
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="pull-right">
+                <button type="reset" class="btn btn-default">Apagar Tudo</button>
+                <button type="submit" class="btn btn-primary">Salvar Nota</button>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+      </form>
+    </div><!-- /.col-lg-12 -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 
 <footer>
@@ -181,12 +253,21 @@
 				<textarea  class="campoFaleConosco "></textarea>
 			</label>
 			<br>
-			<button type="submit" name="enviar" class="pull-right btn btn-info" id="botaoEnviar">Enviar</button>
+			<button type="submit" name="enviar" class="pull-right btn btn-primary" id="botaoEnviar">Enviar</button>
 	</fieldset>
 	</form>
 </div>
 </footer>
 
+<script type="text/javascript">
+	function setaDadosModal(id, nome, data, mensagem) {
+
+    	document.getElementById('idmodal').value = id;
+    	document.getElementById('nomemodal').value = nome;
+    	document.getElementById('datamodal').value = data;
+    	document.getElementById('mensagemmodal').value = mensagem;
+	}
+</script>
 
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -207,6 +288,7 @@
             document.getElementById(el).style.display = 'none';
     }
 </script>
+
 
 </body>
 </html>
